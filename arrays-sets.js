@@ -1,0 +1,33 @@
+const myArr = [1, 5, 564, 8, 36, 4, 25, 36, 91, 26, 454, 1245, 25, 6, 84, 526, 561556, 225, 56];
+const myOrderedArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21];
+const mySet = new Set([1, 4, 6, 8, 9, 15, 18, 20, 25, 29, 38, 42, 57, 59, 66, 72, 77, 81, 86, 99, 110]);
+
+const linearSearch = (arr, num) => {
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] === num) {
+            return i;
+        }
+    };
+    return -1;
+};
+
+const binarySearch = (arr, num) => {
+
+    let lowerBound = 0;
+    let upperBound = arr.length - 1;
+
+    while (lowerBound <= upperBound) {
+        let midPoint = Math.floor((upperBound + lowerBound) / 2);
+
+        if (arr[midPoint] === num) {
+            return midPoint;
+        } else if (num < arr[midPoint]) {
+            upperBound = midPoint - 1;
+        } else if (num > arr[midPoint]) {
+            lowerBound = midPoint + 1
+        };
+    };
+    return -1;
+};
+
+console.log(binarySearch(myOrderedArray, 6))
