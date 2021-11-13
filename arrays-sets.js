@@ -81,6 +81,3 @@ const bubbleSortCompact = (arr) => {
     };
     return arr;
 };
-
-
-    console.log(bubbleSortCompact(myUnorderedArr));
