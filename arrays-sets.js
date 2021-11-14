@@ -1,5 +1,5 @@
-const myUnorderedArr = [1, 5, 564, 8, 36, 4, 25, 36, 91, 26, 454, 1245, 25, 6, 84, 526, 561556, 225, 56];
-const myOrderedArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21];
+const myUnorderedArr = [1, 5, 564, 8, 36, 4, 25, 36, 91, 26, 454, 1245, 25, 6, 84, 526, 561556, 225, 56, 56];
+const myOrderedArr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21];
 const mySet = new Set([1, 4, 6, 8, 9, 15, 18, 20, 25, 29, 38, 42, 57, 59, 66, 72, 77, 81, 86, 99, 110]);
 
 const linearSearch = (arr, num) => {
@@ -43,23 +43,28 @@ const binarySearchCompact = (arr, num) => {
 };
 
 const bubbleSort = (arr) => {
-    let rightmostIdx = arr.length - 1;
     let sorted = false;
+    let steps = 0;
 
     while (!sorted) {
+       steps ++
         sorted = true;
 
         for (let i = 0; i < arr.length; i++) {
+            steps ++
             if (arr[i] > arr[i + 1]) {
+                steps ++
                 const valueBelow = arr[i];
                 const valueAbove = arr[i + 1];
                 arr[i] = valueAbove;
+               steps ++
                 arr[i + 1] = valueBelow;
+         steps ++
                 sorted = false;
             };
-            rightmostIdx -= 1;
         };
     };
+    console.log(steps)
     return arr;
 };
 
@@ -81,3 +86,62 @@ const bubbleSortCompact = (arr) => {
     };
     return arr;
 };
+
+const arrayHasDuplicate = (arr) => {
+    let existingNumbers = [];
+
+    for (let i = 0; i < arr.length; i++) {
+        if (existingNumbers[arr[i]] === 1) return true;
+        existingNumbers[arr[i]] = 1;
+    }
+    return false;
+};
+
+const findGreatestNumberSlow = (arr) => {
+
+    for (let i = 0; i < arr.length; i++) {
+        let isGreatest = true;
+
+        for (let j = 0; j < arr.length; j++) {
+            if (arr[j] > arr[i]) {
+                isGreatest = false
+            };
+        };
+        if (isGreatest) return arr[i]
+    };
+};
+
+const findGreatestNumberQuick = (arr) => {
+    let greatestNum = 0;
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] > greatestNum) greatestNum = arr[i];
+    };
+    return greatestNum;
+}
+
+const selectionSort = (arr) => {
+    let steps = 0;
+    for (let i = 0; i < arr.length -1; i++) {
+        steps ++
+        let indexOfLowestNumber = i;
+        for (let j = i + 1; j < arr.length; j++) {
+            steps ++
+            if (arr[j] < arr[indexOfLowestNumber]) {
+                indexOfLowestNumber = j;
+            };
+            if (indexOfLowestNumber !== i) {
+                let temp = arr[i];
+                arr[i] = arr[indexOfLowestNumber]
+                steps ++
+                arr[indexOfLowestNumber] = temp
+                steps ++
+            };
+        };
+    };
+    console.log(steps)
+    return arr;
+};
+
+console.log(bubbleSort(myUnorderedArr))
+console.log(selectionSort(myUnorderedArr))
+// console.log(selectionSort1(myUnorderedArr))
