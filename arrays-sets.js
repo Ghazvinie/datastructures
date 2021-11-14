@@ -44,27 +44,18 @@ const binarySearchCompact = (arr, num) => {
 
 const bubbleSort = (arr) => {
     let sorted = false;
-    let steps = 0;
-
     while (!sorted) {
-       steps ++
         sorted = true;
-
         for (let i = 0; i < arr.length; i++) {
-            steps ++
             if (arr[i] > arr[i + 1]) {
-                steps ++
                 const valueBelow = arr[i];
                 const valueAbove = arr[i + 1];
                 arr[i] = valueAbove;
-               steps ++
                 arr[i + 1] = valueBelow;
-         steps ++
                 sorted = false;
             };
         };
     };
-    console.log(steps)
     return arr;
 };
 
@@ -120,28 +111,16 @@ const findGreatestNumberQuick = (arr) => {
 }
 
 const selectionSort = (arr) => {
-    let steps = 0;
     for (let i = 0; i < arr.length -1; i++) {
-        steps ++
         let indexOfLowestNumber = i;
         for (let j = i + 1; j < arr.length; j++) {
-            steps ++
-            if (arr[j] < arr[indexOfLowestNumber]) {
-                indexOfLowestNumber = j;
-            };
+            if (arr[j] < arr[indexOfLowestNumber]) indexOfLowestNumber = j;
             if (indexOfLowestNumber !== i) {
                 let temp = arr[i];
                 arr[i] = arr[indexOfLowestNumber]
-                steps ++
                 arr[indexOfLowestNumber] = temp
-                steps ++
             };
         };
     };
-    console.log(steps)
     return arr;
 };
-
-console.log(bubbleSort(myUnorderedArr))
-console.log(selectionSort(myUnorderedArr))
-// console.log(selectionSort1(myUnorderedArr))
