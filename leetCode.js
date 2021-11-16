@@ -23,24 +23,42 @@ const twoSum2 = function (nums, target) {
         };
     };
 };
-const twoSum3 = function(nums, target) {
+const twoSum3 = function (nums, target) {
     if (nums.length === 2) return [0, 1];
     let map = {} // create a map
-    for (let i = 0; i < nums.length; i++){
+    for (let i = 0; i < nums.length; i++) {
         let targetMinusNum = target - nums[i]; // get the number for target - nums[i]
         let doesMapHaveIt = map[targetMinusNum] // will look at map and see if it has a prop of targetMinusNums
         if (doesMapHaveIt != undefined) return [doesMapHaveIt, i] // map does have targetMinusNum as a property and return the value of i
         map[nums[i]] = i //map[targetMinusNum === undefined] therefore add the targetMinusNum as a property and the value as i
     }
-    
+
 };
 
 // Contains duplicate
-const containsDuplicate = function(nums) {
+const containsDuplicate = function (nums) {
     let existingNums = [];
-    for (let i = 0; i < nums.length; i++){
+    for (let i = 0; i < nums.length; i++) {
         if (existingNums[nums[i]] != undefined) return true
         existingNums[nums[i]] = i
-}
+    }
     return false
+};
+
+// Valid Anagram
+const isAnagram = function (s, t) {
+    if (s.length !== t.length) return false
+    const sMap = {};
+    for (let i = 0; i < s.length; i++) {
+        if (!sMap[s[i]]) {
+            sMap[s[i]] = 1;
+        } else {
+            sMap[s[i]]++;
+        };
+    };
+    for (let i = 0; i < t.length; i++) {
+        if (!sMap[t[i]]) return false;
+        sMap[t[i]]--;
+    };
+    return true;
 };

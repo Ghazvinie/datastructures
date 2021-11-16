@@ -128,19 +128,18 @@ const selectionSort = (arr) => {
 const insertionSort = (arr) => {
     for (let i = 1; i< arr.length; i++){
         let temp = arr[i];
-        let position = i - 1;
-
-        while(position >= 0){
-            if (arr[position] > temp){
-                arr[position +1] = arr[position];
-                position = position - 1;
+        let theNumberToCompare = i - 1;
+        while(theNumberToCompare >= 0){
+            if (arr[theNumberToCompare] > temp){
+                arr[theNumberToCompare + 1] = arr[theNumberToCompare];
+                theNumberToCompare --;
             } else {
                 break;
-            }
-        }
-        arr[position + 1] = temp;
-    }
+            };
+        };
+        arr[theNumberToCompare + 1] = temp;
+    };
     return arr;
 };
 
-console.log(insertionSort(myUnorderedArr));
+console.log(insertionSort([4,2,7,1,3]));
