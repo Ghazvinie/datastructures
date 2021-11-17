@@ -62,3 +62,27 @@ const isAnagram = function (s, t) {
     };
     return true;
 };
+//  Valid Parentheses
+var isValid = function (s) {
+    let stack = [];
+    const dictionary = {
+        '(': ')',
+        '{': '}',
+        '[': ']'
+    };
+    for (let i = 0; i < s.length; i++) {
+        switch (s[i]) {
+            case '(': stack.push(dictionary[s[i]]);
+                break;
+            case '{': stack.push(dictionary[s[i]]);
+                break;
+            case '[': stack.push(dictionary[s[i]]);
+                break;
+            default:
+                if (s[i] != stack.pop()) {
+                    return false;
+                };
+        };
+    };
+    return stack.length === 0;
+};
