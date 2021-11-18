@@ -63,7 +63,7 @@ const isAnagram = function (s, t) {
     return true;
 };
 //  Valid Parentheses
-var isValid = function (s) {
+const isValid = function (s) {
     let stack = [];
     const dictionary = {
         '(': ')',
@@ -85,4 +85,19 @@ var isValid = function (s) {
         };
     };
     return stack.length === 0;
+};
+
+const productExceptSelf = function (nums) {
+    let result = [];
+    let multiplier = 1;
+    for (let i = 0; i < nums.length; i++) { // multiply nums from left to right
+        result[i] = multiplier;
+        multiplier *= nums[i];
+    };
+    multiplier = 1;
+    for (let i = nums.length - 1; i >= 0; i--) { // multiply nums right to left, using the results from previous loop
+        result[i] *= multiplier;
+        multiplier *= nums[i];
+    };
+    return result;
 };
