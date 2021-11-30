@@ -101,3 +101,42 @@ const productExceptSelf = function (nums) {
     };
     return result;
 };
+
+
+const maxSubArray = function(nums) {
+    if (nums.length == 1) return nums[0];
+      let biggestNum = -Infinity;
+      for (let i = 0; i < nums.length; i++){
+        let temp = nums[i];
+        if (temp > biggestNum) biggestNum = temp;
+        for (let j = i + 1; j < nums.length; j++){
+  
+          temp += nums[j];
+          if (temp > biggestNum) biggestNum = temp;
+        }
+        temp = 0;
+      }
+      return biggestNum;
+  };
+  
+  
+  
+  const maxSubArray2  = (nums) => {
+    let temp = 0;
+    let biggestNum = -Infinity;
+    for (let i = 0; i < nums.length; i++){
+      if (nums[i] > biggestNum) biggestNum = nums[i];
+  
+  
+      if (nums[i] > temp){
+        if (temp > biggestNum) biggestNum = temp;
+  
+        temp = nums[i]
+      } else {
+        temp += nums[i];
+      }
+      
+    }
+    return biggestNum;
+  }
+  
